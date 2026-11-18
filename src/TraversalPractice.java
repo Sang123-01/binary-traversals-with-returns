@@ -63,7 +63,7 @@ public class TraversalPractice {
             return;
         }
 
-        if(node.data % 0 != 0)
+        if(node.data % 2 != 0)
         {
             System.out.println(node.data);
         }
@@ -94,8 +94,19 @@ public class TraversalPractice {
      * @param node the root of the tree
      * @return the sum of the leaf node values
      */
-    public static int sumLeafNodes(TreeNode node) {
-        return -1;
+    public static int sumLeafNodes(TreeNode node) 
+    {
+        if(node == null){return 0;}
+        int sum = 0;
+        if(node.left == null && node.right == null)
+            {
+                sum += node.data;
+            }
+        int left = sumLeafNodes(node.left);
+        int right = sumLeafNodes(node.right);
+        sum += left + right;
+        return sum;
+        
     }
 
     /**
